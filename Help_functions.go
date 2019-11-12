@@ -12,23 +12,6 @@ func evaluatePoints(g func(float64) float64, x []float64) []float64 {
 	return y
 }
 
-func matrix(c, r int) [][]float64 {
-	var matrix [][]float64
-	for i := 0; i < r; i++ {
-		matrix = append(matrix, make([]float64, c))
-	}
-	return matrix
-}
-
-func FromMattoVec(matrix [][]float64) []float64 {
-	Size := len(matrix) * len(matrix[0])
-	vector := make([]float64, Size)
-	for i := 0; i < len(matrix); i++ {
-		copy(vector[i*len(matrix[i]):(i+1)*len(matrix[i])], matrix[i])
-	}
-	return vector
-}
-
 func sequenceOfX(N int) ([]float64, float64) {
 	sequence := make([]float64, N+1)
 	h := (B - A) / float64(N)
@@ -66,6 +49,5 @@ func seqX(N int, a, b float64) []float64 {
 	for i := 0; i < len(sequence); i++ {
 		sequence[i] = a + h*float64(i)
 	}
-	sequence[N] = b
 	return sequence
 }
